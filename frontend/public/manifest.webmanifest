@@ -1,0 +1,19 @@
+{
+  "name": "FaStyle — Beauté & Boutique",
+  "short_name": "FaStyle",
+  "description": "Réservez vos prestations beauté et découvrez notre boutique cosmétiques & vêtements.",
+  "theme_color": "#6c8a2c",
+  "background_color": "#faf7f4",
+  "display": "standalone",
+  "start_url": "/",
+  "lang": "fr",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
