@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Outlet, NavLink, Link, useNavigate } from 'react-router-dom';
 import {
-  LayoutDashboard, Calendar, Scissors, ShoppingBag,
+  LayoutDashboard, Calendar, CalendarDays, Scissors, ShoppingBag,
   Package, Star, Users, LogOut, ChevronRight, Home, Menu, X,
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
@@ -15,6 +15,7 @@ const ADMIN_LINKS = [
   { to: '/admin/commandes',    label: 'Commandes',     icon: Package },
   { to: '/admin/avis',         label: 'Avis',          icon: Star },
   { to: '/admin/clientes',     label: 'Clientes',      icon: Users },
+  { to: '/admin/creneaux',     label: 'Créneaux',      icon: CalendarDays },
 ];
 
 function SidebarNav({ onClose }) {
@@ -22,7 +23,7 @@ function SidebarNav({ onClose }) {
   const navigate = useNavigate();
 
   const handleLogout = async () => {
-    onClose();
+    onClose?.();
     await logout();
     toast.success('Déconnexion réussie.');
     navigate('/');

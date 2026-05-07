@@ -29,6 +29,7 @@ const AdminProducts     = lazy(() => import('./pages/admin/ProductsPage'));
 const AdminOrders       = lazy(() => import('./pages/admin/OrdersPage'));
 const AdminReviews      = lazy(() => import('./pages/admin/ReviewsPage'));
 const AdminClientes     = lazy(() => import('./pages/admin/ClientesPage'));
+const AdminSlots        = lazy(() => import('./pages/admin/SlotsPage'));
 
 export default function App() {
   return (
@@ -75,6 +76,7 @@ export default function App() {
               <Route path="commandes"    element={<AdminOrders />} />
               <Route path="avis"         element={<AdminReviews />} />
               <Route path="clientes"     element={<AdminClientes />} />
+              <Route path="creneaux"     element={<AdminSlots />} />
             </Route>
           </Routes>
         </Suspense>
