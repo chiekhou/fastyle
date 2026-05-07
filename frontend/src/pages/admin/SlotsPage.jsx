@@ -21,20 +21,31 @@ const DAYS_OF_WEEK = [
   { value: 0, label: 'Dimanche' },
 ];
 
-const toMonthStr = (date) => date.toISOString().slice(0, 7);
+const toMonthStr = (date) => {
+  const y = date.getFullYear();
+  const m = String(date.getMonth() + 1).padStart(2, '0');
+  return `${y}-${m}`;
+};
+
+const toDateStr = (date) => {
+  const y = date.getFullYear();
+  const m = String(date.getMonth() + 1).padStart(2, '0');
+  const d = String(date.getDate()).padStart(2, '0');
+  return `${y}-${m}-${d}`;
+};
 
 const getDaysInMonth = (monthStr) => {
   const [year, month] = monthStr.split('-').map(Number);
   const days = [];
   const d = new Date(year, month - 1, 1);
   while (d.getMonth() === month - 1) {
-    days.push(d.toISOString().split('T')[0]);
+    days.push(toDateStr(d));
     d.setDate(d.getDate() + 1);
   }
   return days;
 };
 
-const todayStr = () => new Date().toISOString().split('T')[0];
+const todayStr = () => toDateStr(new Date());
 
 export default function AdminSlotsPage() {
   const [month, setMonth]           = useState(toMonthStr(new Date()));
@@ -43,7 +54,7 @@ export default function AdminSlotsPage() {
   const [modalOpen, setModalOpen]   = useState(false);
   const [generating, setGenerating] = useState(false);
   const [form, setForm] = useState({
-    start_date:  todayStr(),
+    start_date: todayStr(),
     end_date:    '',
     closed_days: [0],
   });
